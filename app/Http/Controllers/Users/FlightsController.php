@@ -13,16 +13,18 @@ class FlightsController extends Controller
 
     public function __construct(){
         
-        $this->middleware('auth');
+        $this->middleware('auth')->except('index');
     }
 
 
     public function index(){
-    	$flights = Flight::all();
-        $starts = Flight::select('from')->groupBy('from')->pluck('from');
+    	
+            $flights = Flight::all();
+        	$starts = Flight::select('from')->groupBy('from')->pluck('from');
+        	
 
+    		return view('pages.index', compact('flights', 'starts'));
 
-    	return view('pages.index', compact('flights', 'starts'));
     }
 
     public function destination(Request $request){
@@ -46,6 +48,7 @@ class FlightsController extends Controller
     }
 
     public function store(Request $request){
+    	
         Booking::where(['user_id'=>Auth::user()->id])
         ->where(['flight_id'=>$request->flight_id])
         ->where(['seats'=>$request->input('seats')])

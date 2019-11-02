@@ -12,7 +12,9 @@
 */
 
 
+
 Auth::routes(['verify' => true]);
+
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware(['auth' ,'verified']);
 
@@ -34,8 +36,13 @@ Route::namespace('Admin')->prefix('admin')->middleware(['auth', 'admin'])->name(
 
 // Home Page
 Route::get('/', 'Users\FlightsController@index')->name('index');
+
+
+// get TOs
 Route::get('/dests', 'Users\FlightsController@destination')->name('dests');
+// get departures
 Route::get('/deps', 'Users\FlightsController@departure')->name('deps');
+// post seats
 Route::post('/data', 'Users\FlightsController@store')->name('data');
 
 Route::middleware('verified')->group(function(){

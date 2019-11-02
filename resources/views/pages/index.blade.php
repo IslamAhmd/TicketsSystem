@@ -22,9 +22,12 @@
 											<form class="probootstrap-form" id="BookingForm">
 
 												<p class="alert alert-success" id="success"></p>
-
+												
+												<!-- flight input -->
 												<input type="hidden" id="flightId">
 												
+
+												<!-- from -->
 												<div class="form-group">
 												  <div class="row mb-3">
 													
@@ -49,6 +52,9 @@
 													  </div>
 													</div>
 
+
+
+													<!-- to -->
 													<div class="col-md">
 													  <div class="form-group">
 														<label for="to">To</label>
@@ -125,6 +131,8 @@
 																
 															</div>
 														</div> --}}
+
+														<!-- seats -->
 														<div class="col-md">
 																<div class="form-group">
 																	<label for="id_label_single">Seats</label>
@@ -134,6 +142,7 @@
 																	
 																</div>
 														</div>
+														<!-- submit -->
 														<div class="col-md">
 														  <input type="submit" value="Submit" class="btn btn-primary btn-block" id="submit">
 														</div>
@@ -315,6 +324,7 @@
 					for (let i=0; i <res.length; i++){
 						ops += '<option value="'+res[i]+'">'+res[i]+'</option>';
 					}
+					
 					$('#selectTo').html(ops);
 				});
 

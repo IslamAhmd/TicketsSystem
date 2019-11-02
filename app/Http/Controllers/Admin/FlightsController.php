@@ -55,7 +55,7 @@ class FlightsController extends Controller
         ]);
 
         $booking = new Booking;
-        $seats = $booking->seats;
+        
 
         $flight = new Flight;
         $flight->from = $request->input('from');
@@ -64,7 +64,7 @@ class FlightsController extends Controller
         $flight->time = $request->input('time');
         $flight->price = $request->input('price');
         $flight->arrival_date = $request->input('arrival_date');
-        $flight->available_seats = 100 - $seats;
+        
 
         $flight->save();
 
